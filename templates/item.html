@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Find your item</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+	</head>
+
+	<body> 
+		<ul>
+    	{% for item in nav.top %}
+    		<li class="{{ 'active' if item.is_active else '' }}">
+       			<a href="{{ item.url }}">{{ item.label }}</a>
+    		</li>
+    	{% endfor %}
+		</ul>
+
+		<div class="jumbotron text-center">
+			<div class="col-sm-12 ">
+				<h1>Let's help to avoid the bin and find: {{ food }}</h1>
+			</div>
+		</div>	
+
+		<section class="text-center" id="mission">
+			<div class="container container-text bg-green">
+				<div class="row">
+					<div class='col-sm-12'>
+						<h2>Now where can you pick up your item?</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<section class="text-center" id="listedfood">
+			<div class="container container-text">
+					<div>
+                     	{% for i in people %}
+                     	<div>
+    						The postcode is: {{ i['postcode'] }}
+    					</div>
+                     	{% endfor %}
+					<div>
+         </div>
+     </section>
+
+	</body>
+</html>
