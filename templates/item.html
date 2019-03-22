@@ -1,49 +1,70 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<title>Find your item</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-	</head>
+<head>
+	<title>Find your item</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
 
-	<body> 
-		<ul>
-    	{% for item in nav.top %}
-    		<li class="{{ 'active' if item.is_active else '' }}">
-       			<a href="{{ item.url }}">{{ item.label }}</a>
-    		</li>
-    	{% endfor %}
-		</ul>
+<body> 
+	<ul>
+		{% for item in nav.top %}
+		<li class="{{ 'active' if item.is_active else '' }}">
+			<a href="{{ item.url }}">{{ item.label }}</a>
+		</li>
+		{% endfor %}
+	</ul>
 
-		<div class="jumbotron text-center">
-			<div class="col-sm-12 ">
-				<h1>Let's help to avoid the bin and find: {{ food }}</h1>
-			</div>
-		</div>	
+	<div class="jumbotron text-center">
+		<div class="col-sm-12 ">
+			<h1>Let's help to avoid the bin and find: {{ food }}</h1>
+		</div>
+	</div>	
 
-		<section class="text-center" id="mission">
-			<div class="container container-text bg-green">
-				<div class="row">
-					<div class='col-sm-12'>
-						<h2>Now where can you pick up your item?</h2>
-					</div>
+	<section class="text-center" id="mission">
+		<div class="container container-text bg-green">
+			<div class="row">
+				<div class='col-sm-12'>
+					<h2>Now where can you pick up your item?</h2>
 				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="text-center" id="contact">
+		<div class="container container-text">
+			<div>
+				{% for person in people %}
+				<p> We have one available in: {{ person['postcode'] }}</p>
+			</div>
+			<div>
+				<p> Enter your details here to claim your item to avoid the bin! </p>
+			</div>
+			<section class="text-center" id="contact-form">
+				<div class="container container-text">
+					<form method="post" action="/contact">
+						<div class="form-group">	
+							<label for="name">Name:</label>
+							<input type="name" class="form-control" id="name" name="name" required="required" placeholder="What's your name?">
+							<label for="email">Email address:</label>
+							<input type="email" class="form-control" id="email" name="email" required="required" placeholder="So we can get you in contact with your food!">
+							<input type="hidden" name="nameto" value="{{ person['name'] }}">
+							<input type="hidden" name="emailto" value="{{ person['email'] }}">
+							<input type="hidden" name="food" value="{{ food }}">
+
+						</div>
+						<input type="submit" class="btn btn-success" value="Submit" id="submit-button">
+					</form>
+				</div>
+			</section>
+
+			{% endfor %}
+
+			<div>
 			</div>
 		</section>
 
-
-
-		<section class="text-center" id="listedfood">
-			<div class="container container-text">
-					<div>
-                     	{% for i in people %}
-                     	<div>
-    						The postcode is: {{ i['postcode'] }}
-    					</div>
-                     	{% endfor %}
-					<div>
-         </div>
-     </section>
-
 	</body>
-</html>
+	</html>
