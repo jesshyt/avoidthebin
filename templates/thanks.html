@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Avoid The Bin</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+	</head>
+
+	<body>
+	<ul>
+    	{% for item in nav.top %}
+    	<li class="{{ 'active' if item.is_active else '' }}">
+        	<a href="{{ item.url }}">{{ item.label }}</a>
+    	</li>
+    	{% endfor %}
+	</ul>
+	<div class="jumbotron text-center">
+		<div class="col-sm-12 ">
+			<h1>Thanks for helping to Avoid The Bin!</h1>
+		</div>
+	</div>	
+
+	<section class="text-center" id="thanks">
+		<div class="container container-text">
+			<p> Thank you {{ user.name }} for helping us avoid the bin. We hope that your {{ user.food }} will soon be picked up.</p>
+		</div>
+	</section>
+
+	</body>
+</html>

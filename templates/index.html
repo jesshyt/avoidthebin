@@ -8,67 +8,52 @@
 </head>
 
 <body>
+	<ul>
+		{% for item in nav.top %}
+		<li class="{{ 'active' if item.is_active else '' }}">
+			<a href="{{ item.url }}">{{ item.label }}</a>
+		</li>
+		{% endfor %}
+	</ul>
 
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  	<div class="container-nav">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Spare Chair</a>
-      </div>
 
-    <div class="container navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-        	{% for item in nav.top %}
-        	<li class="{{ 'active' if item.is_active else '' }}"> <a class="nav-link js-scroll-trigger" data-target=".navbar-collapse.in" data-toggle="collapse" href="{{ item.url }}">{{ item.label }}</a> </li>
-    		{% endfor %}
-		</ul>
-	</div>
-</nav>
 
-  <div class="jumbotron">
-    <div class="col-sm-12 ">
-      <div class="row text-center caption">
-        <h1>Avoid The Bin</h1>
-      </div>
-    </div>
-  </div>
-
-<section class="text-center" id="mission">
-	<div class="container container-text bg-grey">
-		<div class="row">
-			<div class='col-sm-12'>
-				<h2>We are on a mission to reduce the amount of waste that ends up in the bin.</h2>
-				<h2>So why not get involved now!</h2>
-				<img class="img-responsive" src="{{ url_for('static', filename='images/foodwaste.png')}}">
-			</div>
+	<div class="jumbotron text-center">
+		<div class="col-sm-12 ">
+				<h1>Avoid The Bin</h1>
 		</div>
 	</div>
-</section>
 
-<section class="text-center" id="nearby">
-	<div class="container container-text bg-green">
-		<div class="row">
-			<div class='col-sm-12'>
-				<h2>See what's available near you. </h2>
-				<a href="/listed" class="btn btn-default">Listed</a>
+	<section class="text-center" id="mission">
+		<div class="container container-text bg-grey">
+			<div class="row">
+				<div class='col-sm-12'>
+					<h2>We are on a mission to reduce the amount of waste that ends up in the bin.</h2>
+					<h2>So why not get involved now!</h2>
+					<img class="img-responsive" src="{{ url_for('static', filename='images/foodwaste.png')}}">
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section class="text-center" id="nearby">
-	<div class="container container-text bg-purple">
-		<div class="row">
-			<div class='col-sm-12'>
-				<h2>Got something you want to avoid the bin?</h2>
-				<a href="/list" class="btn btn-default">List It</a>
+	<section class="text-center" id="nearby">
+		<div class="container container-text">
+			<div class="row">
+				<div class='col-sm-6 bg-purple'>
+					<h2>Got something you want to Avoid The Bin?</h2>
+					<p>It's really quick to add your leftover item. </p>
+					<p>Simply add your details to the form. </p>
+					<p>And it's done! It's available for someone to pick up! </p>
+					<a href="/listit" class="btn btn-default">Click here to List It</a>
+				</div>
+				<div class='col-sm-6 bg-green'>
+					<h2>See what's available near you. </h2>
+					<p>It's super easy to find items near you!</p>
+					<p>Just select the item you want.</p>
+					<p>Then find the item close to you. </p>
+					<p>The pick up the item to Avoid The Bin!</p>
+					<a href="/listed" class="btn btn-default">Click here to find available items</a>
+				</div>
 			</div>
 		</div>
 	</div>

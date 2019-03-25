@@ -559,15 +559,15 @@ pre code {
 }
 
 .bg-green {
-  background-color: #68B19C;
+  background-color: #00A6ED;
 }
 
 .bg-grey {
-  background-color: #AAACB0;
+  background-color: #FFB400;
 }
 
 .bg-purple {
-  background-color: #522B47;
+  background-color: #7FB800;
 }
 
 @media (min-width: 576px) {

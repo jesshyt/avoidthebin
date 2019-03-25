@@ -77,7 +77,7 @@ def contact():
 	print user_data
 	print "you have made it here"
 	send_simple_message(emailto, emailfrom, nameto, name, foodgone)
-	return "ALL OK"
+	return render_template('thanks.html', person = user_data)
 
 
 app.run(debug=True)
