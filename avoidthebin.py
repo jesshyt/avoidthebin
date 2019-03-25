@@ -79,5 +79,5 @@ def contact():
 	send_simple_message(emailto, emailfrom, nameto, name, foodgone)
 	return render_template('thanks.html', person = user_data)
 
-
-app.run(debug=True)
+if __name__ == '__main__':
+	app.run(debug=True)
