@@ -8,7 +8,7 @@ nav = Navigation(app)
 nav.Bar('top', [
 	nav.Item('Home', 'home'),
     nav.Item('List It', 'listit'),
-    nav.Item('Listed', 'listed'),
+    nav.Item('Listed', 'listed')
 ])
 
 @app.route("/")
@@ -78,6 +78,17 @@ def contact():
 	print "you have made it here"
 	send_simple_message(emailto, emailfrom, nameto, name, foodgone)
 	return render_template('thanks.html', person = user_data)
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+   error = None
+   if request.method == "POST":
+       if request.form["username"] != "admin" or request.form["password"] != "admin":
+           error = "Invalid Credentials. Please try again."
+       else:
+           return redirect(url_for("home"))
+   return render_template("login.html", error=error)
+
 
 if __name__ == '__main__':
 	app.run(debug=True)

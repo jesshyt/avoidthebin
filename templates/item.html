@@ -15,6 +15,33 @@
 		{% endfor %}
 	</ul>
 
+	<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+	</style>
+
+
 	<div class="jumbotron text-center">
 		<div class="col-sm-12 ">
 			<h1>Let's help to avoid the bin and find: {{ food }}</h1>
@@ -22,12 +49,10 @@
 	</div>	
 
 	<section class="text-center" id="mission">
-		<div class="container container-text bg-green">
 			<div class="row">
 				<div class='col-sm-12'>
 					<h2>Now where can you pick up your item?</h2>
 				</div>
-			</div>
 		</div>
 	</section>
 

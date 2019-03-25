@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<title>Avoid The Bin</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-	</head>
+<head>
+	<title>Avoid The Bin</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
 
-	<body>
-		<ul>
-    	{% for item in nav.top %}
-    		<li class="{{ 'active' if item.is_active else '' }}">
-       			<a href="{{ item.url }}">{{ item.label }}</a>
-    		</li>
-    	{% endfor %}
-		</ul>
-		<div class="jumbotron text-center">
-			<div class="col-sm-12 ">
-				<h1>Find food near you.</h1>
-			</div>
-		</div>	
+<body>
+	<ul>
+		{% for item in nav.top %}
+		<li class="{{ 'active' if item.is_active else '' }}">
+			<a href="{{ item.url }}">{{ item.label }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+
+	<div class="jumbotron text-center">
+		<div class="col-sm-12 ">
+			<h1>Find food near you.</h1>
+		</div>
+	</div>	
 
 	<section class="text-center" id="listedfood">
 		<div class="container container-text">
 			<form method="post" action="/item">
 				<div>
 					<ul>
-					{% if listed is defined and listed|length > 0 %}
-        	 			<h2> We currently have available: </h2>
-            	
-            		<div class="row">
-                    	<label>Select an item</label>
-                     	<select name = "food_item" class="form-control" id="food_item">
-                     	{% for food in listed %}
-                     	 	<option value="{{ food }}">{{ food }}</option>
-                     	{% endfor %}
-						</select> 
+						{% if listed is defined and listed|length > 0 %}
+						<h2> We currently have available: </h2>
+
+						<div class="row">
+							<label>Select an item</label>
+							<select name = "food_item" class="form-control" id="food_item">
+								{% for food in listed %}
+								<option value="{{ food }}">{{ food }}</option>
+								{% endfor %}
+							</select> 
+						</div>
+						<br>
+						<div>
+							<button type="submit" class = "btn btn-success" id="find_item">Find it!</button>
+						</div>
+						{% else %}
+						<p> Sorry there isn't anything available right now!</p>
+						{% endif %}
 					</div>
-					<br>
-					<div>
-						<button type="submit" class = "btn btn-success" id="find_item">Find it!</button>
-					</div>
-         				{% else %}
-         					<p> Sorry there isn't anything available right now!</p>
-         				{% endif %}
-         			</div>
-         		</ul>
-         </div>
-     </section>
+				</ul>
+			</div>
+		</section>
 	</body>
-</html>
+	</html>
 

@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<title>Avoid The Bin</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-	</head>
+<head>
+	<title>Avoid The Bin</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+</head>
 
 <body>
 	<ul>
-    	{% for item in nav.top %}
-    	<li class="{{ 'active' if item.is_active else '' }}">
-        	<a href="{{ item.url }}">{{ item.label }}</a>
-    	</li>
-    	{% endfor %}
+		{% for item in nav.top %}
+		<li class="{{ 'active' if item.is_active else '' }}">
+			<a href="{{ item.url }}">{{ item.label }}</a>
+		</li>
+		{% endfor %}
 	</ul>
+
+
+	<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+	</style>
+
+
 	<div class="jumbotron text-center">
 		<div class="col-sm-12 ">
-				<h1>List your food.</h1>
+			<h1>List your food.</h1>
 		</div>
 	</div>	
 
@@ -25,13 +54,13 @@
 			<form method="post" action="/added">
 				<div class="form-group">
 					<label for="name">Name:</label>
-						<input type="name" class="form-control" id="name" name="name" required="required" placeholder="What's your name?">
+					<input type="name" class="form-control" id="name" name="name" required="required" placeholder="What's your name?">
 					<label for="food">Food:</label>
-						<input type="food" class="form-control" id="food" name="food" required="required" placeholder="Food to avoid the bin!">
+					<input type="food" class="form-control" id="food" name="food" required="required" placeholder="Food to avoid the bin!">
 					<label for="postcode">Postcode:</label>
-						<input type="postcode" class="form-control" id="postcode" name="postcode" required="required" placeholder="Enter your postcode">
+					<input type="postcode" class="form-control" id="postcode" name="postcode" required="required" placeholder="Enter your postcode">
 					<label for="email">Email:</label>
-						<input type="email" class="form-control" id="email" name="email" required="email" placeholder="Enter your email">
+					<input type="email" class="form-control" id="email" name="email" required="email" placeholder="Enter your email">
 				</div>
 				<input type="submit" class="btn btn-success" value="Submit" id="submit-button">
 			</form>
